@@ -18,6 +18,11 @@ int StringCount(char* _Arr)
 
 void ChangeCh(char* _Arr, char _PrevCh, char _NextCh)
 {
+	if (nullptr == _Arr)
+	{
+		return;
+	}
+
 	for (int i = 0; _Arr[i] != 0; i++)
 	{
 		if (_Arr[i] == _PrevCh)

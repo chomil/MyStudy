@@ -27,26 +27,16 @@ void TrimDelete(char* _string)
 		return;
 	}
 
-	char TmpString[256] = {};
-
 	int iTmp = 0;
 	for (int i = 0; _string[i] != 0; i++)
 	{
 		if (_string[i] != ' ')
 		{
-			TmpString[iTmp++] = _string[i];
+			_string[iTmp++] = _string[i];
 		}
 	}
-	TmpString[iTmp] = 0;
-
-
-	iTmp = 0;
-	while (TmpString[iTmp] != 0)
-	{
-		_string[iTmp] = TmpString[iTmp];
-		++iTmp;
-	}
 	_string[iTmp] = 0;
+
 
 	return;
 }

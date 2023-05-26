@@ -46,5 +46,7 @@ void ConsoleScreen::Print() const
         printf_s(ArrScreen[y]);
         printf_s("\n");
     }
+
+    printf_s("\n이동:WASD / 총알:스페이스바\n");
 }
 

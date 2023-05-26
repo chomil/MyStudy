@@ -47,13 +47,13 @@ void GameManager::GamePlay()
         }
 
         //ÃÑ¾Ë ½ºÅ©¸°¿¡ ¼Â
-        if (Screen->IsScreenOut(PlayerBullet->GetPos() + Up))
+        if (Screen->IsScreenOut(PlayerBullet->GetPos() + PlayerBullet->GetMoveDir()))
         {
             PlayerBullet->SetShoot(false);
         }
         if (PlayerBullet->GetShoot() == true)
         {
-            PlayerBullet->AddPos(Up);
+            PlayerBullet->AddPos(PlayerBullet->GetMoveDir());
             Screen->SetPixel(PlayerBullet->GetPos(), '*');
             BulletHit();
         }
@@ -130,6 +130,7 @@ void GameManager::Input()
         //ÃÑ¾Ë½î±â
         PlayerBullet->SetPos(MainPlayer->GetPos());
         PlayerBullet->SetShoot(true);
+        PlayerBullet->SetMoveDir(MainPlayer->GetLastMoveDir());
         break;
     default:
         break;
@@ -137,6 +138,7 @@ void GameManager::Input()
 
     if (!(MovePos == int4{ 0, 0 }))
     {
+        MainPlayer->SetLastMoveDir(MovePos);
         if (false == Screen->IsScreenOut(MainPlayer->GetPos() + MovePos))
         {
             if (false == IsPlayerCollision(MovePos))
